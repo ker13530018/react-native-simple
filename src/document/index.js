@@ -1,7 +1,18 @@
-import React, { useState } from 'react'
-import { StyleSheet, Text, View, FlatList, ScrollView } from 'react-native'
+import React, { useState, Component } from 'react'
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  ScrollView,
+  Button,
+} from 'react-native'
 import Row from '../components/row'
-
+import {
+  CustomHeaderButtons,
+  CustomHeaderButton,
+  Item,
+} from '../components/rightButton'
 const init = [
   {
     id: '1',
@@ -30,27 +41,51 @@ const styles = StyleSheet.create({
   },
 })
 
-const Document = props => {
-  const [documents, setDocument] = useState(init)
+class Document extends Component {
+  //  const [documents, setDocument] = useState(init)
+  state = { documents: init }
 
-  return (
-    <ScrollView contentContainerStyle={styles.contentContainer}>
-      <FlatList
-        data={documents}
-        keyExtractor={item => item.id}
-        renderItem={({ index, item }) => {
-          const { title, imageSource, description } = item
-          return (
-            <Row
-              title={title}
-              imageSource={imageSource}
-              description={`${index + 1}. ${description}`}
-            />
-          )
-        }}
-      />
-    </ScrollView>
-  )
+  static navigationOptions = {
+    // headerTitle: 'Custom Title',
+    // headerTransparent: false,
+    headerRight: (
+      <CustomHeaderButtons>
+        <Item
+          title="Add"
+          iconName="plus-circle"
+          color="#33B8FF"
+          onPress={() => console.log('add')}
+        />
+        <Item
+          title="Remove"
+          iconName="minus-circle"
+          color="#FF4233"
+          onPress={() => console.log('remove')}
+        />
+      </CustomHeaderButtons>
+    ),
+  }
+
+  render() {
+    return (
+      <ScrollView contentContainerStyle={styles.contentContainer}>
+        <FlatList
+          data={this.state.documents}
+          keyExtractor={item => item.id}
+          renderItem={({ index, item }) => {
+            const { title, imageSource, description } = item
+            return (
+              <Row
+                title={title}
+                imageSource={imageSource}
+                description={`${index + 1}. ${description}`}
+              />
+            )
+          }}
+        />
+      </ScrollView>
+    )
+  }
 }
 
 export default Document
