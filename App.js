@@ -2,6 +2,7 @@ import React from 'react'
 import { createStackNavigator, createAppContainer } from 'react-navigation'
 import HomeScreen from './src/home'
 import DocumentScreen from './src/document'
+import SquareScreen from './src/square'
 
 const AppNavigator = createStackNavigator(
   {
@@ -17,9 +18,12 @@ const AppNavigator = createStackNavigator(
         title: 'Document',
       },
     },
+    Square: {
+      screen: SquareScreen,
+    },
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'Square',
   },
 )
 
