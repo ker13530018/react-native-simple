@@ -19,9 +19,9 @@ const reducer = (state, { type, amount }) => {
 
 const SquareScreen = () => {
   const [state, dispatch] = useReducer(reducer, {
-    red: 255,
-    blue: 255,
-    green: 255,
+    red: 0,
+    blue: 0,
+    green: 0,
   })
 
   const { red, blue, green } = state
@@ -47,38 +47,14 @@ const SquareScreen = () => {
         <Button
           title="+"
           onPress={() => {
-            dispatch({ type: 'red', amount: 1 })
+            dispatch({ type: 'red', amount: 5 })
           }}
           style={{ flex: 1 }}
         />
         <Button
           title="-"
           onPress={() => {
-            dispatch({ type: 'red', amount: -1 })
-          }}
-          style={{ flex: 1 }}
-        />
-      </View>
-      <Text style={{ textAlign: 'center', marginTop: 5 }}>Blue ({blue})</Text>
-      <View
-        style={{
-          display: 'flex',
-          alignContent: 'center',
-          justifyContent: 'center',
-          flexDirection: 'row',
-        }}
-      >
-        <Button
-          title="+"
-          onPress={() => {
-            dispatch({ type: 'blue', amount: 1 })
-          }}
-          style={{ flex: 1 }}
-        />
-        <Button
-          title="-"
-          onPress={() => {
-            dispatch({ type: 'blue', amount: -1 })
+            dispatch({ type: 'red', amount: -5 })
           }}
           style={{ flex: 1 }}
         />
@@ -95,14 +71,38 @@ const SquareScreen = () => {
         <Button
           title="+"
           onPress={() => {
-            dispatch({ type: 'green', amount: 1 })
+            dispatch({ type: 'green', amount: 5 })
           }}
           style={{ flex: 1 }}
         />
         <Button
           title="-"
           onPress={() => {
-            dispatch({ type: 'green', amount: -1 })
+            dispatch({ type: 'green', amount: -5 })
+          }}
+          style={{ flex: 1 }}
+        />
+      </View>
+      <Text style={{ textAlign: 'center', marginTop: 5 }}>Blue ({blue})</Text>
+      <View
+        style={{
+          display: 'flex',
+          alignContent: 'center',
+          justifyContent: 'center',
+          flexDirection: 'row',
+        }}
+      >
+        <Button
+          title="+"
+          onPress={() => {
+            dispatch({ type: 'blue', amount: 5 })
+          }}
+          style={{ flex: 1 }}
+        />
+        <Button
+          title="-"
+          onPress={() => {
+            dispatch({ type: 'blue', amount: -5 })
           }}
           style={{ flex: 1 }}
         />
@@ -110,7 +110,7 @@ const SquareScreen = () => {
 
       <View
         style={{
-          backgroundColor: `rgb(${red},${blue},${green})`,
+          backgroundColor: `rgb(${red},${green},${blue})`,
           width: 150,
           height: 150,
         }}

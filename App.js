@@ -20,10 +20,13 @@ const AppNavigator = createStackNavigator(
     },
     Square: {
       screen: SquareScreen,
+      navigationOptions: {
+        title: 'Color',
+      },
     },
   },
   {
-    initialRouteName: 'Square',
+    initialRouteName: 'Home',
   },
 )
 

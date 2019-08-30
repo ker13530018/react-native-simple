@@ -22,6 +22,12 @@ const Home = props => {
           navigation.navigate('Document')
         }}
       />
+      <Button
+        title="Square"
+        onPress={() => {
+          navigation.navigate('Square')
+        }}
+      />
     </View>
   )
 }
